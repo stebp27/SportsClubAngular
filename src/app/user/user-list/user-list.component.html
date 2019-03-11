@@ -1,0 +1,32 @@
+<head><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"></head>
+<table>
+<thead>
+<th>Id</th>
+<th>First Name</th>
+<th>Last Name</th>
+<th>Birth Date</th>
+<th>Date of registration</th>
+<th>Address</th>
+<th>Reservations</th>
+<th>Money spent</th>
+<th>Challenges</th>
+<th>Wins</th>
+
+</thead>
+<tbody>
+<tr *ngFor='let user of users'>
+  
+  <td>{{user.userId}}</td>
+  <td>{{user.firstName}}</td>
+  <td><a [routerLink]="['/user', user.userId]">{{user.lastName}}</a></td>
+  <td>{{user.birthDate}}</td>
+  <td>{{user.dateOfRegistration}}</td>
+  <td>{{user.address}}</td>
+  <td>{{user.reservations}}</td>
+  <td>{{user.spentMoney}}</td>
+  <td>{{user.challenges}}</td>
+  <td>{{user.wins}}</td>
+  
+</tr>
+</tbody>
+</table>
