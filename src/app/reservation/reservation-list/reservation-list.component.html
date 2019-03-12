@@ -1,3 +1,32 @@
-<p>
-  reservation-list works!
-</p>
+<head><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"></head>
+<table>
+<thead>
+  <th>ID</th>
+  <th>reservationID</th>
+  <th>Sport</th>
+  <th>FieldID</th>
+  <th>Date</th>
+  <th>Time Start</th>
+  <th>Time End</th>
+  <th>isDouble</th>
+  <th>Price</th>
+  <th>isChallenge</th>
+
+</thead>
+<tbody>
+<tr *ngFor='let reservation of reservations'>
+  
+  <td><a [routerLink]="['/reservation', reservation.reservationId]">{{reservation.reservationId}}</a></td>
+  <td>{{reservation.userId}}</td>
+  <td>{{reservation.sport}}</td>
+  <td>{{reservation.fieldId}}</td>
+  <td>{{reservation.date}}</td>
+  <td>{{reservation.timeStart}}</td>
+  <td>{{reservation.timeEnd}}</td>
+  <td>{{reservation.isDouble}}</td>
+  <td>{{reservation.price}}</td>
+  <td>{{reservation.isChallenge}}</td>
+  
+</tr>
+</tbody>
+</table>

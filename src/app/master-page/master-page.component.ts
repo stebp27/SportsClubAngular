@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
         <li><a class='nav-link' routerLinkActive='active' [routerLink]="['/welcome']">Home</a></li>
         <li><a class='nav-link' routerLinkActive='active' [routerLink]="['/field']">Field</a></li>
         <li><a class='nav-link' routerLinkActive='active' [routerLink]="['/user']">User</a></li>
+        <li><a class='nav-link' routerLinkActive='active' [routerLink]="['/reservation']">Reservation</a></li>
       </ul>
   </nav>
   <div class='container'>
