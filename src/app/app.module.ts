@@ -11,27 +11,32 @@ import { RouterModule } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { UserModule } from './user/user.module';
 import { ReservationModule } from './reservation/reservation.module';
+import { FieldAddComponent } from './field-add/field-add.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MasterPageComponent,
-    WelcomeComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    RouterModule.forRoot([
-      { path: 'welcome', component: WelcomeComponent},
-      { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-      { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
-    ]),
-    FieldModule,
-    UserModule,
-    ReservationModule
-  ],
-  providers: [],
-  bootstrap: [MasterPageComponent]
-})
+   declarations: [
+      AppComponent,
+      MasterPageComponent,
+      WelcomeComponent,
+      FieldAddComponent
+   ],
+   imports: [
+      BrowserModule,
+      AppRoutingModule,
+      HttpClientModule,
+      RouterModule.forRoot([     
+      { path: 'welcome', component: WelcomeComponent },
+      { path: '**', component: WelcomeComponent },
+      { path: ' ', component: WelcomeComponent }
+      ]),
+      FieldModule,
+      UserModule,
+      ReservationModule,
+      FormsModule
+   ],
+   providers: [],
+   bootstrap: [MasterPageComponent]
+}) 
 export class AppModule { }

@@ -25,6 +25,7 @@ export class FieldListComponent implements OnInit {
 
     );
   }
+  }
   /*ngOnInit(): void {
     this.fieldService.getFields().subscribe(
       newFields => this.createModel(newFields),
@@ -34,4 +35,3 @@ export class FieldListComponent implements OnInit {
   public createModel(newFields : IField[]){
     this.fields = newFields; this.field = this.fields[0];
   }*/
-}

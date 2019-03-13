@@ -1,0 +1,125 @@
+<div class="card">
+  <div class="card-header">
+    Add Field!
+  </div>
+
+  <div class="card-body">
+    <form novalidate
+          (ngSubmit)="save(addField)"
+          #addField="ngForm">
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="nameId">Name</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="name"
+                 type="text" 
+                 placeholder="Name (required)"
+                 required
+                 minlength="3"
+                 [(ngModel)]=field.name
+                 name="Name"
+                 #nameVar="ngModel"
+                 [ngClass]="{'is-invalid': (nameVar.touched || nameVar.dirty) && !nameVar.valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="nameVar?.errors?.required">
+              Please enter field name.
+            </span>
+            <span *ngIf="nameVar?.errors?.minlength">
+              The name must be longer than 3 characters.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="surface">Surface</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="surface"
+                 type="number"
+                 placeholder="Surface (required)"
+                 required
+                 maxlength="25"
+                 [(ngModel)]="field.surface"
+                 name="surface"
+                 #surfaceVar="ngModel"
+                 [ngClass]="{'is-invalid': (surfaceVar.touched || surfaceVar.dirty) && !surfaceVar.valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="surfaceVar?.errors?.required">
+              Please enter the surface of the field.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="price">Price</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="price"
+                 type="number"
+                 placeholder="Price (required)"
+                 required
+                 min = "0"
+                 [(ngModel)]="field.price"
+                 name="price"
+                 #priceVar="ngModel"
+                 [ngClass]="{'is-invalid': (priceVar.touched || priceVar.dirty) && !priceVar.valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="priceVar?.errors?.required">
+              Please enter the price of the field.
+            </span>
+            <span *ngIf="priceVar?.errors?.min">
+              Please enter a price greater than 0.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      
+      <div class="form-group row mb-2"> <!--Da implementare,forse superfluo-->
+        <label class="col-md-2 col-form-label"
+               for="players">Players</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="players"
+                 type="number"
+                 placeholder="Players (required)"
+                 required
+                 [(ngModel)]="field.players"
+                 name="players"
+                 #playersVar="ngModel"
+                 [ngClass]="{'is-invalid': (playersVar.touched || playersVar.dirty) && !playersVar.valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="playersVar?.errors?.required">
+              Please enter the number of players.
+            </span>
+            <!--<span *ngIf="playersVar.errors?.email">
+              Please enter a valid email address.
+            </span>-->
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <div class="offset-md-2 col-md-4">
+          <button class="btn btn-primary mr-3"
+                  type="submit"
+                  style="width:80px"
+                  [title]="addField.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+                  [disabled]="!addField.valid">
+            Save
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<br>Dirty: {{ addField.dirty }}
+<br>Touched: {{ addField.touched }}
+<br>Valid: {{ addField.valid }}
+<br>Value: {{ addField.value | json }}
