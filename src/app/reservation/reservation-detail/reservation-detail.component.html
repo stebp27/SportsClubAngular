@@ -1,3 +1,35 @@
-<p>
-  reservation-detail works!
-</p>
+<head><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"></head>
+<table class="table-striped">
+<thead>
+<th>ReservationID</th>
+<th>Creator First Name</th>
+<th>Creator Last Name</th>
+<th>Sport</th>
+<th>FieldID</th>
+<th>Date</th>
+<th>Time Start</th>
+<th>Time End</th>
+<th>isDouble</th>
+<th>Price</th>
+<th>isChallenge</th>
+
+</thead>
+<tbody>
+<tr *ngIf="reservation">
+  
+  <td>{{reservation.reservationId}}</td>
+  <td>{{reservation.userFirstName}}</td>
+  <td>{{reservation.userLastName}}</td>
+  <td>{{reservation.sport}}</td>
+  <td>{{reservation.fieldId}}</td>
+  <td>{{reservation.date | date: "dd/MM/yyyy"}}</td>
+  <td>{{reservation.timeStart | date: "hh:mm"}}</td>
+  <td>{{reservation.timeEnd | date: "hh:mm"}}</td>
+  <td><input type="checkbox"[checked]="reservation.isDouble" onclick="return false"></td>
+  <td>{{reservation.price}}</td>
+  <td><input type="checkbox"[checked]="reservation.isChallenge" onclick="return false"></td>
+  
+  
+</tr>
+</tbody>
+</table>

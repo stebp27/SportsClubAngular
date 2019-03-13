@@ -10,6 +10,8 @@ import { MasterPageComponent } from './master-page/master-page.component';
 import { RouterModule } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { UserModule } from './user/user.module';
+import { ReservationModule } from './reservation/reservation.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,10 @@ import { UserModule } from './user/user.module';
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
     ]),
     FieldModule,
-    UserModule
+    UserModule,
+    ReservationModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [MasterPageComponent]

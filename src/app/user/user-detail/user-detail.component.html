@@ -1,5 +1,5 @@
 <head><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"></head>
-<table>
+<table class="table-striped">
 <thead>
 <th>Id</th>
 <th>First Name</th>
@@ -19,8 +19,8 @@
   <td>{{user.userId}}</td>
   <td>{{user.firstName}}</td>
   <td>{{user.lastName}}</td>
-  <td>{{user.birthDate}}</td>
-  <td>{{user.dateOfRegistration}}</td>
+  <td>{{user.birthDate | date:"dd/MM/yyyy"}}</td>
+  <td>{{user.dateOfRegistration | date:"dd/MM/yyyy"}}</td>
   <td>{{user.address}}</td>
   <td>{{user.reservations}}</td>
   <td>{{user.spentMoney}}</td>

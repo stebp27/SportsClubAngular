@@ -6,6 +6,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FieldDetailComponent } from './field-detail/field-detail.component';
 import { FieldDetailGuard } from './field-detail/field-detail.guard';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -16,9 +17,9 @@ import { FieldDetailGuard } from './field-detail/field-detail.guard';
       { path: 'field', component: FieldListComponent },
       { path: 'field/:id', canActivate: [FieldDetailGuard], component: FieldDetailComponent }
     ]),
+    FormsModule
   ],
   declarations: [ FieldListComponent, FieldDetailComponent],
-  providers: [],
-  bootstrap: [FieldListComponent]
+  providers: []
 })
 export class FieldModule { }

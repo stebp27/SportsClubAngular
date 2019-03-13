@@ -5,6 +5,8 @@ export interface IUser {
     birthDate: Date;
     dateOfRegistration: Date;
     address: string;
+    eMail: string;
+    phoneNumber: string;
     reservations: number;
     spentMoney: number;
     challenges: number;

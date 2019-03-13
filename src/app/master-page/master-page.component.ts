@@ -7,8 +7,11 @@ import { Component } from '@angular/core';
       <a class='navbar-brand'>{{pageTitle}}</a>
       <ul class='nav nav-pills'>
         <li><a class='nav-link' routerLinkActive='active' [routerLink]="['/welcome']">Home</a></li>
-        <li><a class='nav-link' routerLinkActive='active' [routerLink]="['/field']">Field</a></li>
-        <li><a class='nav-link' routerLinkActive='active' [routerLink]="['/user']">User</a></li>
+        <li><a class='nav-link' routerLinkActive='active' [routerLink]="['/field']">Fields</a></li>
+        <li><a class='nav-link' routerLinkActive='active' [routerLink]="['/user']">Users</a></li>
+        <li><a class='nav-link' routerLinkActive='active' [routerLink]="['/reservation']">Reservations</a></li>
+        <li><a class='nav-link' routerLinkActive='active' [routerLink]="['/adduser']">Add User</a></li>
+        <li><a class='nav-link' routerLinkActive='active' [routerLink]="['/addreservation']">Add Reservation</a></li>
       </ul>
   </nav>
   <div class='container'>

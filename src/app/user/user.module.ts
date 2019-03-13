@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { UserListComponent } from './user-list/user-list.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
+import { UserListComponent } from './user-list/user-list.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UserDetailGuard } from './user-detail/user-detail.guard';
+import { UserSignupComponent } from './user-signup/user-signup.component';
+
 
 @NgModule({
   imports: [
@@ -14,11 +18,12 @@ import { UserDetailGuard } from './user-detail/user-detail.guard';
     HttpClientModule,
     RouterModule.forChild([
       { path: 'user', component: UserListComponent },
+      { path: 'adduser', component: UserSignupComponent },
       { path: 'user/:id', canActivate: [UserDetailGuard], component: UserDetailComponent }
     ]),
+    FormsModule
   ],
-  declarations: [ UserListComponent, UserDetailComponent],
-  providers: [],
-  bootstrap: [UserListComponent]
+  declarations: [ UserListComponent, UserDetailComponent, UserSignupComponent],
+  providers: []
 })
 export class UserModule { }

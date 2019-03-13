@@ -1,0 +1,143 @@
+<div class="card">
+  <div class="card-header">
+    Add a new reservation
+  </div>
+
+  <div class="card-body">
+    <form novalidate (ngSubmit)="save()" [formGroup]="reservationForm">
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="userFirstNameId">First Name</label>
+        <div class="col-md-8">
+          <input class="form-control" id="userFirstNameId" type="text" placeholder="First Name (required)"
+            formControlName="userFirstName"
+            [ngClass]="{'is-invalid': (reservationForm.get('userFirstName').touched || reservationForm.get('userFirstName').dirty) && !reservationForm.get('userFirstName').valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="reservationForm.get('userFirstName').errors?.required">
+              Please enter your first name.
+            </span>
+            <span *ngIf="reservationForm.get('userFirstName').errors?.minlength">
+              The first name must be longer than 3 characters.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="userLastNameId">Last Name</label>
+        <div class="col-md-8">
+          <input class="form-control" id="userLastNameId" type="text" placeholder="Last Name (required)"
+            formControlName="userLastName"
+            [ngClass]="{'is-invalid': (reservationForm.get('userLastName').touched || reservationForm.get('userLastName').dirty) && !reservationForm.get('userLastName').valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="reservationForm.get('userLastName').errors?.required">
+              Please enter your last name.
+            </span>
+            <span *ngIf="reservationForm.get('userLastName').errors?.maxlength">
+              The last name must be less than 50 characters.
+            </span>
+          </span>
+        </div>
+      </div>
+
+
+      <div class="form-group row mb-2">
+          <label class="col-md-2 col-form-label" for="sportId">Sport</label>
+  
+          <div class="col-md-2">
+            <select (change)="onSportChange($event.target.value)" class="form-control" formControlName= "sport">
+              <option value="" disabled selected hidden>Select a sport...</option>
+              <option value="{{sports.Tennis}}">Tennis</option>
+              <option value="{{sports.Paddle}}">Paddle</option>
+              <option value="{{sports.Soccer}}">Soccer</option>
+            </select>
+          </div>
+        </div>
+
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="fieldId">Field</label>
+
+        <div class="col-md-2">
+          <select class="form-control" formControlName= "field">
+            <option value="" disabled selected hidden>Select a field...</option>
+            <option *ngFor="let field of fields" value="{{field.fieldId}}">{{field.name}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="dateId">Date</label>
+        <div class="col-md-8">
+          <input class="form-control" id="dateId" type="date" formControlName="date"
+            [ngClass]="{'is-invalid': (reservationForm.get('date').touched || reservationForm.get('date').dirty) && !reservationForm.get('date').valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="reservationForm.get('date').errors?.required">
+              Please enter date.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div formGroupName="timeGroup">
+        <div class="form-group row mb-2">
+          <label class="col-md-2 col-form-label" for="timeStartId">Time Start</label>
+          <div class="col-md-8">
+            <input class="form-control" id="timeStartId" type="time" formControlName="timeStart"
+              [ngClass]="{'is-invalid': reservationForm.get('timeGroup').errors || ((reservationForm.get('timeGroup.timeStart').touched || reservationForm.get('timeGroup.timeStart').dirty) && !reservationForm.get('timeGroup.timeStart').valid) }" />
+            <span class="invalid-feedback">
+              <span *ngIf="reservationForm.get('timeGroup.timeStart').errors?.required">
+                Please enter a time start.
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group row mb-2">
+          <label class="col-md-2 col-form-label" for="timeEndId">Time End</label>
+          <div class="col-md-8">
+            <input class="form-control" id="timeEndId" type="time" formControlName="timeEnd"
+              [ngClass]="{'is-invalid': reservationForm.get('timeGroup').errors || ((reservationForm.get('timeGroup.timeEnd').touched || reservationForm.get('timeGroup.timeEnd').dirty) && !reservationForm.get('timeGroup.timeEnd').valid) }" />
+            <span class="invalid-feedback">
+              <span *ngIf="reservationForm.get('timeGroup.timeEnd').errors?.required">
+                Please enter a time end.
+              </span>
+              <span *ngIf="reservationForm.get('timeGroup').errors?.endGreater">
+                  Time End must be greater than Time Start
+                </span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="isDoubleId">Double</label>
+        <div class="form-check">
+          <input class="form-control" id="isDoubleId" type="checkbox" formControlName="isDouble">
+        </div>
+      </div>
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="isChallengeId">Challenge</label>
+        <div class="form-check">
+          <input class="form-control" id="isChallengeId" type="checkbox" formControlName="isChallenge">
+        </div>
+      </div>
+      <div class="form-group row mb-2">
+          <div class="offset-md-2 col-md-4">
+            <button class="btn btn-primary mr-3"
+                    type="submit"
+                    style="width:80px"
+                    [title]="reservationForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+                    [disabled]="!reservationForm.valid">
+              Save
+            </button>
+          </div>
+        </div>
+    </form>
+  </div>
+</div>
+<br>Dirty: {{ reservationForm.dirty }}
+<br>Touched: {{ reservationForm.touched }}
+<br>Valid: {{ reservationForm.valid }}
+<br>Value: {{ reservationForm.value | json }}

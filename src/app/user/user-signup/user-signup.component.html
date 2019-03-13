@@ -1,0 +1,168 @@
+<div class="card">
+  <div class="card-header">
+    Sign Up!
+  </div>
+
+  <div class="card-body">
+    <form novalidate
+          (ngSubmit)="save(signupForm)"
+          #signupForm="ngForm">
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="firstNameId">First Name</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="firstNameId"
+                 type="text"
+                 placeholder="First Name (required)"
+                 required
+                 minlength="3"
+                 [(ngModel)] = user.firstName
+                 name="firstName"
+                 #firstNameVar="ngModel"
+                 [ngClass]="{'is-invalid': (firstNameVar.touched || firstNameVar.dirty) && !firstNameVar.valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="firstNameVar?.errors?.required">
+              Please enter your first name.
+            </span>
+            <span *ngIf="firstNameVar?.errors?.minlength">
+              The first name must be longer than 3 characters.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="lastNameId">Last Name</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="lastNameId"
+                 type="text"
+                 placeholder="Last Name (required)"
+                 required
+                 maxlength="50"
+                 [(ngModel)]="user.lastName"
+                 name="lastName"
+                 #lastNameVar="ngModel"
+                 [ngClass]="{'is-invalid': (lastNameVar.touched || lastNameVar.dirty) && !lastNameVar.valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="lastNameVar?.errors?.required">
+              Please enter your last name.
+            </span>
+            <span *ngIf="lastNameVar?.errors?.maxlength">
+              The last name must be less than 50 characters.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="birthDateId">BirthDate</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="birthDateId"
+                 type="text"
+                 placeholder="BirthDate (required)"
+                 required
+                 [(ngModel)]="user.birthDate"
+                 name="birthDate"
+                 #birthDateVar="ngModel"
+                 [ngClass]="{'is-invalid': (birthDateVar.touched || birthDateVar.dirty) && !birthDateVar.valid}" />
+          <span class="invalid-feedback">
+            <span *ngIf="birthDateVar?.errors?.required">
+              Please enter your BirthDate.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="addressId">Address</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="addressId"
+                 type="address"
+                 placeholder="Address (required)"
+                 required
+                 [(ngModel)]="user.address"
+                 name="address"
+                 #addressVar="ngModel"
+                 [ngClass]="{'is-invalid': (addressVar.touched || addressVar.dirty) && !addressVar.valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="addressVar?.errors?.required">
+              Please enter your address.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="emailId">Email</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="emailId"
+                 type="email"
+                 placeholder="Email (required)"
+                 required
+                 email
+                 [(ngModel)]="user.eMail"
+                 name="email"
+                 #emailVar="ngModel"
+                 [ngClass]="{'is-invalid': (emailVar.touched || emailVar.dirty) && !emailVar.valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="emailVar?.errors?.required">
+              Please enter your email address.
+            </span>
+            <span *ngIf="emailVar?.errors?.email">
+              Please enter a valid email address.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="phonenumberId">Phone Number</label>
+        <div class="col-md-8">
+          <!--da migliorare regex-->
+          <input class="form-control"
+                 id="phonenumberId"
+                 type="text"
+                 pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$" 
+                 placeholder="Phone Number (required)"
+                 required
+                 [(ngModel)]="user.phoneNumber"
+                 name="phonenumber"
+                 #phoneNumberVar="ngModel"
+                 [ngClass]="{'is-invalid': (phoneNumberVar.touched || phoneNumberVar.dirty) && !phoneNumberVar.valid}" />
+          <span class="invalid-feedback">
+            <span *ngIf="phoneNumberVar?.errors?.required">
+              Please enter your phone number.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <div class="offset-md-2 col-md-4">
+          <button class="btn btn-primary mr-3"
+                  type="submit"
+                  style="width:80px"
+                  [title]="signupForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+                  [disabled]="!signupForm.valid">
+            SignUp
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<br>Dirty: {{ signupForm.dirty }}
+<br>Touched: {{ signupForm.touched }}
+<br>Valid: {{ signupForm.valid }}
+<br>Value: {{ signupForm.value | json }}
