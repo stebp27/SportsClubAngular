@@ -19,7 +19,7 @@
                  placeholder="Name (required)"
                  required
                  minlength="3"
-                 [(ngModel)]=fields.name
+                 [(ngModel)]=field.name
                  name="Name"
                  #nameVar="ngModel"
                  [ngClass]="{'is-invalid': (nameVar.touched || nameVar.dirty) && !nameVar.valid }" />
@@ -32,17 +32,29 @@
             </span>
           </span>
         </div>
-      </div>
+      </div>   
 
-        <h4>Surface</h4>
-        <select Surface required>
-          <option value="" disabled selected hidden>Select the type of surface</option>
-          <option value="{{surfaces.Clay}}">Clay</option>
-          <option value="{{surfaces.Grass}}">Grass</option>
-          <option value="{{surfaces.Concrete}}">Concrete</option>
-          
-        </select>
-      <!--<div class="form-group row mb-2">
+      <p><!--Paragraph to divide the select from the input name--></p>
+
+        <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label"
+            for="surfaceId"><b>Surface</b></label>
+            <div class="col-md-8">
+            <select class="form-control"
+                    id="surfaceId"
+                      [(ngModel)] = "field.surface"
+                    name="surface">
+              <option value=""
+                      disabled
+                      selected
+                      hidden>Select the type of surface...</option>
+              <option value="{{surfaces.Clay}}">Clay</option>
+              <option value="{{surfaces.Grass}}">Grass</option>
+              <option value="{{surfaces.Concrete}}">Concrete</option>
+            </select>
+          </div>
+        </div>
+      <!--<div class="form-group row mb-2"> 
         <label class="col-md-2 col-form-label"
                for="surface">Surface</label>
         <div class="col-md-8">
@@ -86,7 +98,7 @@
                  placeholder="Price (required)"
                  required
                  min = "0"
-                 [(ngModel)]="fields.price"
+                 [(ngModel)]="field.price"
                  name="price"
                  #priceVar="ngModel"
                  [ngClass]="{'is-invalid': (priceVar.touched || priceVar.dirty) && !priceVar.valid }" />

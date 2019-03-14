@@ -3,6 +3,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { IField } from './IField';
+import { HttpHeaders } from "@angular/common/http";
+import { Field } from './Field';
 
 
 @Injectable({
@@ -11,7 +13,11 @@ import { IField } from './IField';
 export class FieldService {
 
   private fieldUrl = 'https://localhost:44395/api/fields';
-
+  httpOptions = {
+    headers: new HttpHeaders ({
+      "Content-Type": "application/json"
+    })
+  }
   constructor(private http: HttpClient) { }
 
   getFields():  Observable<IField[]> {
@@ -37,5 +43,8 @@ export class FieldService {
       map((fields: IField[]) => fields.find(f => f.fieldId === id))
     );
   }
-
+  public addField(field : Field): Observable<Field> {
+    console.log(JSON.stringify(field));
+    return this.http.post<Field>(this.fieldUrl,JSON.stringify(field), this.httpOptions);
+  }
 }
