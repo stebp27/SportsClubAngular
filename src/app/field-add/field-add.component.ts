@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { Field } from '../field/field';
+import { Field, Surfaces } from '../field/field';
 
 @Component({
   selector: 'app-field-add',
@@ -10,10 +10,13 @@ import { Field } from '../field/field';
 })
 export class FieldAddComponent implements OnInit {
 
-  field= new Field();
+  fields= new Field();
+  get surfaces() {return Surfaces}
   constructor() { }
 
+  
   ngOnInit() {
+
   }
 
   save(fieldForm: NgForm){

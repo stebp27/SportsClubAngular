@@ -2,6 +2,7 @@
   <div class="card-header">
     Add Field!
   </div>
+  <p><!--Paragraph to divide the card header from the inputs--></p>
 
   <div class="card-body">
     <form novalidate
@@ -10,7 +11,7 @@
 
       <div class="form-group row mb-2">
         <label class="col-md-2 col-form-label"
-               for="nameId">Name</label>
+               for="nameId"><b>Name</b></label>
         <div class="col-md-8">
           <input class="form-control"
                  id="name"
@@ -18,7 +19,7 @@
                  placeholder="Name (required)"
                  required
                  minlength="3"
-                 [(ngModel)]=field.name
+                 [(ngModel)]=fields.name
                  name="Name"
                  #nameVar="ngModel"
                  [ngClass]="{'is-invalid': (nameVar.touched || nameVar.dirty) && !nameVar.valid }" />
@@ -33,7 +34,15 @@
         </div>
       </div>
 
-      <div class="form-group row mb-2">
+        <h4>Surface</h4>
+        <select Surface required>
+          <option value="" disabled selected hidden>Select the type of surface</option>
+          <option value="{{surfaces.Clay}}">Clay</option>
+          <option value="{{surfaces.Grass}}">Grass</option>
+          <option value="{{surfaces.Concrete}}">Concrete</option>
+          
+        </select>
+      <!--<div class="form-group row mb-2">
         <label class="col-md-2 col-form-label"
                for="surface">Surface</label>
         <div class="col-md-8">
@@ -42,6 +51,7 @@
                  type="number"
                  placeholder="Surface (required)"
                  required
+                 min = "0"
                  maxlength="25"
                  [(ngModel)]="field.surface"
                  name="surface"
@@ -51,13 +61,24 @@
             <span *ngIf="surfaceVar?.errors?.required">
               Please enter the surface of the field.
             </span>
+            <span *ngIf="surfaceVar?.errors?.min">
+              Please enter a surface greater than 0.
+            </span>
           </span>
         </div>
       </div>
-
-      <div class="form-group row mb-2">
+    -->
+      <!--<h4>Basic select</h4>
+      <select placeholder="Surfaces">
+        <option *ngFor="let surface of 2" [value]="field.surface">
+          {{field.surface}}
+        </option>
+      </select>-->
+    
+<p><!--Paragraph to divide the select from the input price--></p>
+        <div class="form-group row mb-2">
         <label class="col-md-2 col-form-label"
-               for="price">Price</label>
+               for="price"><b>Price</b></label>
         <div class="col-md-8">
           <input class="form-control"
                  id="price"
@@ -65,7 +86,7 @@
                  placeholder="Price (required)"
                  required
                  min = "0"
-                 [(ngModel)]="field.price"
+                 [(ngModel)]="fields.price"
                  name="price"
                  #priceVar="ngModel"
                  [ngClass]="{'is-invalid': (priceVar.touched || priceVar.dirty) && !priceVar.valid }" />
@@ -76,31 +97,6 @@
             <span *ngIf="priceVar?.errors?.min">
               Please enter a price greater than 0.
             </span>
-          </span>
-        </div>
-      </div>
-
-      
-      <div class="form-group row mb-2"> <!--Da implementare,forse superfluo-->
-        <label class="col-md-2 col-form-label"
-               for="players">Players</label>
-        <div class="col-md-8">
-          <input class="form-control"
-                 id="players"
-                 type="number"
-                 placeholder="Players (required)"
-                 required
-                 [(ngModel)]="field.players"
-                 name="players"
-                 #playersVar="ngModel"
-                 [ngClass]="{'is-invalid': (playersVar.touched || playersVar.dirty) && !playersVar.valid }" />
-          <span class="invalid-feedback">
-            <span *ngIf="playersVar?.errors?.required">
-              Please enter the number of players.
-            </span>
-            <!--<span *ngIf="playersVar.errors?.email">
-              Please enter a valid email address.
-            </span>-->
           </span>
         </div>
       </div>

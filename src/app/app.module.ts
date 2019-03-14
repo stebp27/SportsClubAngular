@@ -19,8 +19,7 @@ import { FormsModule } from '@angular/forms';
    declarations: [
       AppComponent,
       MasterPageComponent,
-      WelcomeComponent,
-      FieldAddComponent
+      WelcomeComponent
    ],
    imports: [
       BrowserModule,
