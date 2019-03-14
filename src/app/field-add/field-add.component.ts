@@ -13,8 +13,8 @@ import { FieldService } from '../field/field.service';
 export class FieldAddComponent implements OnInit {
 
   field= new Field();
-  get surfaces() {return Surfaces}
-  fieldForm: NgForm;
+  get surfaces() {return Surfaces};
+
   fieldService : FieldService;
   constructor() { }
 
@@ -25,6 +25,9 @@ export class FieldAddComponent implements OnInit {
   save(fieldForm: NgForm){
     console.log(fieldForm.form);
     console.log('Saved: '+ JSON.stringify(fieldForm.value));
+    if (fieldForm.valid) {
+      this.field= fieldForm.value;
+    }
     this.fieldService.addField(this.field).subscribe();
 }
 
