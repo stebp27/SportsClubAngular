@@ -1,0 +1,75 @@
+<div class="card">
+  <div class="card-header">
+    Add Field
+  </div>
+
+  <div class="card-body">
+    <form novalidate (ngSubmit)="saveField()" [formGroup]="fieldForm">
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="nameId">field Name</label>
+        <div class="col-md-8">
+          <input class="form-control" id="nameId" type="text" placeholder="field Name (required)"
+            formControlName="name"
+            [ngClass]="{'is-invalid': (fieldForm.get('name').touched || fieldForm.get('name').dirty) && !fieldForm.get('name').valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="fieldForm.get('name').errors?.required">
+              Please enter your field name.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="surfaceId">Surface</label>
+
+        <div class="col-md-2">
+          <select class="form-control" formControlName= "surface">
+            <option value=""
+            disabled
+            selected
+            hidden>Select the type of surface...</option>
+            <option value="{{surfaces.Clay}}">Clay</option>
+            <option value="{{surfaces.Grass}}">Grass</option>
+            <option value="{{surfaces.Concrete}}">Concrete</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="priceId">Price Field</label>
+        <div class="col-md-8">
+          <input class="form-control" id="priceId" type="number" placeholder="price field (required)"
+            formControlName="price"
+            [ngClass]="{'is-invalid': (fieldForm.get('price').touched || fieldForm.get('price').dirty) && !fieldForm.get('price').valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="fieldForm.get('price').errors?.required">
+              Please enter your field price.
+            </span>
+          </span>
+        </div>
+      </div>
+      
+      <div class="form-group row mb-2">
+        <div class="offset-md-2 col-md-4">
+          <button class="btn btn-primary mr-3"
+                  type="submit"
+                  style="width:150px"
+                  [title]="fieldForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+                  [disabled]="!fieldForm.valid">
+            Add Field
+          </button>
+          <button class="btn btn-outline-secondary mr-3"
+          style="width:80px;"
+          type="button"
+          title="Cancel your edits"
+          [routerLink]="['/field']">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+</div>
+<br>Dirty: {{ fieldForm.dirty }}
+<br>Touched: {{ fieldForm.touched }}
+<br>Valid: {{ fieldForm.valid }}
+<br>Value: {{ fieldForm.value | json }}
