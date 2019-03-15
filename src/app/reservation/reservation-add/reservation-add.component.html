@@ -117,12 +117,14 @@
           <input class="form-control" id="isDoubleId" type="checkbox" formControlName="isDouble">
         </div>
       </div>
+
       <div class="form-group row mb-2">
         <label class="col-md-2 col-form-label" for="isChallengeId">Challenge</label>
         <div class="form-check">
           <input class="form-control" id="isChallengeId" type="checkbox" formControlName="isChallenge">
         </div>
       </div>
+      
       <div class="form-group row mb-2">
           <div class="offset-md-2 col-md-4">
             <button class="btn btn-primary mr-3"
@@ -132,6 +134,13 @@
                     [disabled]="!reservationForm.valid">
               Save
             </button>
+            <button class="btn btn-outline-secondary mr-3"
+                  style="width:80px;"
+                  type="button"
+                  title="Cancel your edits"
+                  [routerLink]="['/reservation']">
+            Cancel
+          </button>
           </div>
         </div>
     </form>

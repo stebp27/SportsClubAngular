@@ -5,7 +5,7 @@ export interface IUser {
     birthDate: Date;
     dateOfRegistration: Date;
     address: string;
-    eMail: string;
+    email: string;
     phoneNumber: string;
     reservations: number;
     spentMoney: number;

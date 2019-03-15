@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { IField } from './IField';
 import { Sports } from '../reservation/IReservation';
+import { Field } from './field';
 
 
 @Injectable({
@@ -12,6 +13,11 @@ import { Sports } from '../reservation/IReservation';
 export class FieldService {
 
   private fieldUrl = 'https://localhost:44395/api/fields';
+  httpOptions = {
+    headers: new HttpHeaders ({
+      "Content-Type": "application/json"
+    })
+  }
 
   constructor(private http: HttpClient) { }
 
@@ -37,6 +43,11 @@ export class FieldService {
     return this.getFields().pipe(
       map((fields: IField[]) => fields.find(f => f.fieldId === id))
     );
+  }
+
+  public addField(field : Field): Observable<Field> {
+    console.log(JSON.stringify(field));
+    return this.http.post<Field>(this.fieldUrl,JSON.stringify(field), this.httpOptions);
   }
 
 }

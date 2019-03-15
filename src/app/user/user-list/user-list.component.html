@@ -7,7 +7,7 @@
 <th>Birth Date</th>
 <th>Date of registration</th>
 <th>Address</th>
-<th>EMail</th>
+<th>Email</th>
 <th>Phone Number</th>
 <th>Reservations</th>
 <th>Money spent</th>
@@ -21,16 +21,19 @@
   <td>{{user.userId}}</td>
   <td>{{user.firstName}}</td>
   <td><a [routerLink]="['/user', user.userId]">{{user.lastName}}</a></td>
-  <td>{{user.birthDate}}</td>
-  <td>{{user.dateOfRegistration}}</td>
+  <td>{{user.birthDate | date: "dd/MM/yyyy"}}</td>
+  <td>{{user.dateOfRegistration | date: "dd/MM/yyyy"}}</td>
   <td>{{user.address}}</td>
-  <td>{{user.eMail}}</td>
+  <td>{{user.email}}</td>
   <td>{{user.phoneNumber}}</td>
   <td>{{user.reservations}}</td>
   <td>{{user.spentMoney}}</td> <!--tipo valuta html-->
   <td>{{user.challenges}}</td> 
   <td>{{user.wins}}</td>
+
+  <a [routerLink]="['/user', user.userId, 'edit']">Edit</a>
   
 </tr>
 </tbody>
 </table>
+

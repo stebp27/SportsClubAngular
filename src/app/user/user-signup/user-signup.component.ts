@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 import { User } from "../user";
+import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-signup',
@@ -10,14 +12,29 @@ import { User } from "../user";
 })
 export class UserSignupComponent implements OnInit {
   user= new User();
+  userForm: FormGroup;
 
-  constructor() { }
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) { }
 
   ngOnInit() {
+    this.userForm = this.fb.group({
+      firstName :[ '', [Validators.required, Validators.minLength(3)]],
+      lastName :[ '', [Validators.required, Validators.maxLength(50)]],
+      birthDate :['',[Validators.required]],
+      address :[ '', [Validators.required]],
+      email :[ '', [Validators.required]],
+      phoneNumber :[ '', [Validators.required]]
+      });
   }
 
-  save(userForm: NgForm) {
-    console.log(userForm.form);
-    console.log('Saved: ' + JSON.stringify(userForm.value));
+  saveUser() {
+    console.log(this.userForm);
+    console.log('Saved: ' + JSON.stringify(this.userForm.value));
+    if(this.userForm.valid){
+      this.user=this.userForm.value;
+      console.log("pippo"+JSON.stringify(this.user));
+    }
+    this.userService.addUser(this.user).subscribe();
+    this.router.navigate(['/user']);
   }
 }

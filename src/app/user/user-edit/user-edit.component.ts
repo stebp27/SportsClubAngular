@@ -108,7 +108,7 @@ export class UserEditComponent implements OnInit {
       // Don't delete, it was never saved.
       this.onSaveComplete();
     } else {
-      if (confirm(`Really delete the user: ${this.user.firstName} ${this.user.lastName}?`)) {
+      if (confirm(`Really delete the user: ${this.user.firstName}?`)) {
         this.userService.deleteUser(this.user.userId)
           .subscribe(
             () => this.onSaveComplete(),

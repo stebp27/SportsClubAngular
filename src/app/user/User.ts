@@ -3,6 +3,6 @@ export class User {
     public lastName = '',
     public birthDate?: Date,
     public address='',
-    public eMail = '',
+    public email = '',
     public phoneNumber='') {}
 }

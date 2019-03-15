@@ -28,9 +28,9 @@
             disabled
             selected
             hidden>Select the type of surface...</option>
-            <option value="{{surfaces.Clay}}">Clay</option>
-            <option value="{{surfaces.Grass}}">Grass</option>
-            <option value="{{surfaces.Concrete}}">Concrete</option>
+            <option value="{{surfaces.Clay}}">{{surfaces.Clay}}</option>
+            <option value="{{surfaces.Grass}}">{{surfaces.Grass}}</option>
+            <option value="{{surfaces.Concrete}}">{{surfaces.Concrete}}</option>
           </select>
         </div>
       </div>
@@ -59,15 +59,16 @@
             Add Field
           </button>
           <button class="btn btn-outline-secondary mr-3"
-          style="width:80px;"
-          type="button"
-          title="Cancel your edits"
-          [routerLink]="['/field']">
+                  style="width:80px;"
+                  type="button"
+                  title="Cancel your edits"
+                  [routerLink]="['/field']">
             Cancel
           </button>
         </div>
       </div>
     </form>
+  </div>
 </div>
 <br>Dirty: {{ fieldForm.dirty }}
 <br>Touched: {{ fieldForm.touched }}

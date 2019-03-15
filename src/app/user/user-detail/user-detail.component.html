@@ -7,6 +7,8 @@
 <th>Birth Date</th>
 <th>Date of registration</th>
 <th>Address</th>
+<th>Email</th>
+<th>PhoneNumber</th>
 <th>Reservations</th>
 <th>Money spent</th>
 <th>Challenges</th>
@@ -22,11 +24,15 @@
   <td>{{user.birthDate | date:"dd/MM/yyyy"}}</td>
   <td>{{user.dateOfRegistration | date:"dd/MM/yyyy"}}</td>
   <td>{{user.address}}</td>
+  <td>{{user.email}}</td>
+  <td>{{user.phoneNumber}}</td>
   <td>{{user.reservations}}</td>
   <td>{{user.spentMoney}}</td>
   <td>{{user.challenges}}</td>
   <td>{{user.wins}}</td>
   
+  <a [routerLink]="['/user', user.userId, 'edit']">Edit</a>
+
 </tr>
 </tbody>
 </table>

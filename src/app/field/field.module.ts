@@ -6,7 +6,8 @@ import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FieldDetailComponent } from './field-detail/field-detail.component';
 import { FieldDetailGuard } from './field-detail/field-detail.guard';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FieldAddComponent } from './field-add/field-add.component';
 
 @NgModule({
   imports: [
@@ -15,11 +16,13 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     RouterModule.forChild([
       { path: 'field', component: FieldListComponent },
+      { path: 'addfield', component: FieldAddComponent},
       { path: 'field/:id', canActivate: [FieldDetailGuard], component: FieldDetailComponent }
     ]),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
-  declarations: [ FieldListComponent, FieldDetailComponent],
+  declarations: [ FieldListComponent, FieldDetailComponent, FieldAddComponent],
   providers: []
 })
 export class FieldModule { }
